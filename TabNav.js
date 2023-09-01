@@ -1,46 +1,11 @@
-import { View, Text } from "react-native";
+import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
-function StoreScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Store Screen</Text>
-    </View>
-  );
-}
-
-function SearchScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Search Screen</Text>
-    </View>
-  );
-}
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
-function CartScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Cart Screen</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Profile Screen</Text>
-    </View>
-  );
-}
+import StoreScreen from "./pages/StoreScreen";
+import SearchScreen from "./pages/SearchScreen";
+import HomeScreen from "./pages/HomeScreen";
+import CartScreen from "./pages/CartScreen";
+import ProfileScreen from "./pages/ProfileScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -56,8 +21,15 @@ export default function TabNav() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      shifting={true}
+      sceneAnimationType="shifting"
+      sceneAnimationEnabled={false}
       activeColor="#007CC2"
-      barStyle={{ backgroundColor: "#ffffff" }}
+      barStyle={{
+        backgroundColor: "#ffffff",
+        borderTopWidth: 1,
+        borderTopColor: "lightgray",
+      }}
     >
       {consumerTabs.map((tab, index) => (
         <Tab.Screen
